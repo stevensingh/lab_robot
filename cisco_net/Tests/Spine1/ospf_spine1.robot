@@ -41,3 +41,8 @@ Check OSPF Neighbor to N9K6
     [Documentation]   Check OSPF neighbour to n9k6
     ${output}         Execute Command    show ip ospf neighbors 100.100.100.6
     Should Contain    ${output}          100.100.100.6     1 FULL/  Eth1/4
+
+Check OSPF Neighbor to N9K7
+    [Documentation]   Check OSPF neighbour to n9k6
+    ${output}         Execute Command    show ip ospf neighbors 100.100.100.7
+    Should Contain    ${output}          100.100.100.6     1 FULL/  Eth1/5
