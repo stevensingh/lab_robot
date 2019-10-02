@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on darwin)" generated="20190912 15:41:19.648" rpa="false">
+<suite id="s1" name="Intra Vni" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni">
+<suite id="s1-s1" name="Centos1 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos1_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:41:19.858" endtime="20190912 15:41:19.859"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190912 15:41:19.859" level="INFO">Logging into 'centos1:22' as 'root'.</msg>
+<msg timestamp="20190912 15:41:21.087" level="INFO">Read output: Last login: Wed Sep  4 12:46:06 2019 from 192.168.1.187
+[root@Centos1 ~]#</msg>
+<status status="PASS" starttime="20190912 15:41:19.859" endtime="20190912 15:41:21.087"></status>
+</kw>
+<status status="PASS" starttime="20190912 15:41:19.858" endtime="20190912 15:41:21.087"></status>
+</kw>
+<test id="s1-s1-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:41:21.089" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190912 15:41:30.127" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:41:30.127" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=0.055 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=0.052 ms
+64 bytes from 10.0.11.11: icmp_se...</msg>
+<status status="PASS" starttime="20190912 15:41:21.088" endtime="20190912 15:41:30.127"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:41:30.128" endtime="20190912 15:41:30.128"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190912 15:41:21.088" endtime="20190912 15:41:30.128" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:41:30.129" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190912 15:41:39.202" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:41:39.202" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=32.7 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=9.37 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:41:30.129" endtime="20190912 15:41:39.202"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:41:39.202" endtime="20190912 15:41:39.203"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190912 15:41:30.129" endtime="20190912 15:41:39.203" critical="yes"></status>
+</test>
+<test id="s1-s1-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:41:39.204" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190912 15:41:48.420" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:41:48.421" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=53.2 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=62.2 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:41:39.204" endtime="20190912 15:41:48.421"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:41:48.421" endtime="20190912 15:41:48.421"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190912 15:41:39.203" endtime="20190912 15:41:48.422" critical="yes"></status>
+</test>
+<test id="s1-s1-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:41:48.423" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190912 15:41:57.512" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:41:57.512" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=81.0 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=16.5 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:41:48.422" endtime="20190912 15:41:57.512"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:41:57.513" endtime="20190912 15:41:57.513"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:41:48.422" endtime="20190912 15:41:57.513" critical="yes"></status>
+</test>
+<test id="s1-s1-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:41:57.514" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190912 15:42:06.596" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:42:06.597" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=45.1 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=16.1 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:41:57.514" endtime="20190912 15:42:06.597"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:06.597" endtime="20190912 15:42:06.597"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:41:57.514" endtime="20190912 15:42:06.598" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190912 15:42:06.599" endtime="20190912 15:42:06.599"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190912 15:41:19.670" endtime="20190912 15:42:06.600"></status>
+</suite>
+<suite id="s1-s2" name="Centos2 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos2_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:06.605" endtime="20190912 15:42:06.605"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190912 15:42:06.606" level="INFO">Logging into 'centos2:22' as 'root'.</msg>
+<msg timestamp="20190912 15:42:07.808" level="INFO">Read output: Last login: Wed Sep  4 12:46:53 2019 from 192.168.1.187
+[root@Centos2 ~]#</msg>
+<status status="PASS" starttime="20190912 15:42:06.606" endtime="20190912 15:42:07.808"></status>
+</kw>
+<status status="PASS" starttime="20190912 15:42:06.605" endtime="20190912 15:42:07.809"></status>
+</kw>
+<test id="s1-s2-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:42:07.810" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190912 15:42:16.869" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:42:16.869" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=12.0 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=9.95 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:42:07.810" endtime="20190912 15:42:16.869"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:16.870" endtime="20190912 15:42:16.870"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190912 15:42:07.809" endtime="20190912 15:42:16.870" critical="yes"></status>
+</test>
+<test id="s1-s2-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:42:16.871" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190912 15:42:25.936" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:42:25.937" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=0.053 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=0.043 ms
+64 bytes from 10.0.11.12: icmp_se...</msg>
+<status status="PASS" starttime="20190912 15:42:16.871" endtime="20190912 15:42:25.937"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:25.937" endtime="20190912 15:42:25.937"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190912 15:42:16.870" endtime="20190912 15:42:25.937" critical="yes"></status>
+</test>
+<test id="s1-s2-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:42:25.938" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190912 15:42:35.027" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:42:35.027" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=27.7 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=15.6 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:42:25.938" endtime="20190912 15:42:35.027"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:35.027" endtime="20190912 15:42:35.028"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190912 15:42:25.938" endtime="20190912 15:42:35.028" critical="yes"></status>
+</test>
+<test id="s1-s2-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:42:35.028" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190912 15:42:44.111" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:42:44.111" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=42.3 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=16.2 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:42:35.028" endtime="20190912 15:42:44.111"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:44.111" endtime="20190912 15:42:44.112"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:42:35.028" endtime="20190912 15:42:44.112" critical="yes"></status>
+</test>
+<test id="s1-s2-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:42:44.113" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190912 15:42:53.205" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:42:53.205" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=26.7 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=16.1 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:42:44.113" endtime="20190912 15:42:53.205"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:53.205" endtime="20190912 15:42:53.206"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:42:44.112" endtime="20190912 15:42:53.206" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190912 15:42:53.207" endtime="20190912 15:42:53.207"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190912 15:42:06.602" endtime="20190912 15:42:53.207"></status>
+</suite>
+<suite id="s1-s3" name="Centos3 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos3_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:42:53.211" endtime="20190912 15:42:53.211"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190912 15:42:53.212" level="INFO">Logging into 'centos3:22' as 'root'.</msg>
+<msg timestamp="20190912 15:42:54.441" level="INFO">Read output: Last login: Wed Sep  4 12:47:40 2019 from 192.168.1.187
+[root@Centos3 ~]#</msg>
+<status status="PASS" starttime="20190912 15:42:53.212" endtime="20190912 15:42:54.441"></status>
+</kw>
+<status status="PASS" starttime="20190912 15:42:53.211" endtime="20190912 15:42:54.442"></status>
+</kw>
+<test id="s1-s3-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:42:54.443" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190912 15:43:03.505" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:03.505" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=15.9 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=16.5 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:42:54.443" endtime="20190912 15:43:03.505"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:03.505" endtime="20190912 15:43:03.506"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190912 15:42:54.442" endtime="20190912 15:43:03.506" critical="yes"></status>
+</test>
+<test id="s1-s3-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:03.507" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190912 15:43:12.593" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:12.593" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=16.8 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=15.4 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:43:03.507" endtime="20190912 15:43:12.593"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:12.594" endtime="20190912 15:43:12.594"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190912 15:43:03.506" endtime="20190912 15:43:12.594" critical="yes"></status>
+</test>
+<test id="s1-s3-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:12.595" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190912 15:43:21.655" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:21.655" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=0.049 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=0.045 ms
+64 bytes from 10.0.11.13: icmp_se...</msg>
+<status status="PASS" starttime="20190912 15:43:12.595" endtime="20190912 15:43:21.655"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:21.656" endtime="20190912 15:43:21.656"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190912 15:43:12.595" endtime="20190912 15:43:21.656" critical="yes"></status>
+</test>
+<test id="s1-s3-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:21.657" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190912 15:43:30.754" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:30.754" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=28.8 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=15.8 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:43:21.657" endtime="20190912 15:43:30.754"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:30.755" endtime="20190912 15:43:30.755"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:43:21.657" endtime="20190912 15:43:30.755" critical="yes"></status>
+</test>
+<test id="s1-s3-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:30.756" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190912 15:43:39.846" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:39.846" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=28.0 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=15.7 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:43:30.756" endtime="20190912 15:43:39.846"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:39.846" endtime="20190912 15:43:39.846"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:43:30.756" endtime="20190912 15:43:39.847" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190912 15:43:39.848" endtime="20190912 15:43:39.848"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190912 15:42:53.209" endtime="20190912 15:43:39.848"></status>
+</suite>
+<suite id="s1-s4" name="Centos4 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos4_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:39.853" endtime="20190912 15:43:39.853"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190912 15:43:39.855" level="INFO">Logging into 'centos4:22' as 'root'.</msg>
+<msg timestamp="20190912 15:43:41.374" level="INFO">Read output: Last login: Wed Sep  4 12:48:26 2019 from 192.168.1.187
+[root@Centos4 ~]#</msg>
+<status status="PASS" starttime="20190912 15:43:39.855" endtime="20190912 15:43:41.374"></status>
+</kw>
+<status status="PASS" starttime="20190912 15:43:39.853" endtime="20190912 15:43:41.374"></status>
+</kw>
+<test id="s1-s4-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:41.375" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190912 15:43:50.445" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:50.446" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=16.1 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=24.6 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:43:41.375" endtime="20190912 15:43:50.446"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:50.446" endtime="20190912 15:43:50.446"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190912 15:43:41.374" endtime="20190912 15:43:50.447" critical="yes"></status>
+</test>
+<test id="s1-s4-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:50.448" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190912 15:43:59.530" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:43:59.530" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=16.4 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=16.1 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:43:50.447" endtime="20190912 15:43:59.530"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:43:59.530" endtime="20190912 15:43:59.531"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190912 15:43:50.447" endtime="20190912 15:43:59.531" critical="yes"></status>
+</test>
+<test id="s1-s4-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:43:59.532" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190912 15:44:08.678" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:44:08.679" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=18.3 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=67.2 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:43:59.532" endtime="20190912 15:44:08.679"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:08.679" endtime="20190912 15:44:08.680"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190912 15:43:59.531" endtime="20190912 15:44:08.680" critical="yes"></status>
+</test>
+<test id="s1-s4-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:44:08.681" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190912 15:44:17.738" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:44:17.738" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=0.057 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=0.067 ms
+64 bytes from 10.0.11.14: icmp_se...</msg>
+<status status="PASS" starttime="20190912 15:44:08.681" endtime="20190912 15:44:17.738"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:17.739" endtime="20190912 15:44:17.739"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:44:08.680" endtime="20190912 15:44:17.739" critical="yes"></status>
+</test>
+<test id="s1-s4-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:44:17.740" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190912 15:44:26.856" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:44:26.856" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=21.5 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=9.70 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:44:17.740" endtime="20190912 15:44:26.856"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:26.856" endtime="20190912 15:44:26.856"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:44:17.740" endtime="20190912 15:44:26.857" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190912 15:44:26.857" endtime="20190912 15:44:26.858"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190912 15:43:39.850" endtime="20190912 15:44:26.858"></status>
+</suite>
+<suite id="s1-s5" name="Centos5 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos5_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:26.862" endtime="20190912 15:44:26.862"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190912 15:44:26.863" level="INFO">Logging into 'centos5:22' as 'root'.</msg>
+<msg timestamp="20190912 15:44:28.060" level="INFO">Read output: Last login: Wed Sep  4 12:49:14 2019 from 192.168.1.187
+[root@Centos5 ~]#</msg>
+<status status="PASS" starttime="20190912 15:44:26.863" endtime="20190912 15:44:28.060"></status>
+</kw>
+<status status="PASS" starttime="20190912 15:44:26.862" endtime="20190912 15:44:28.060"></status>
+</kw>
+<test id="s1-s5-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:44:28.061" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190912 15:44:37.134" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:44:37.134" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=16.0 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=27.9 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:44:28.061" endtime="20190912 15:44:37.134"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:37.134" endtime="20190912 15:44:37.135"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190912 15:44:28.061" endtime="20190912 15:44:37.135" critical="yes"></status>
+</test>
+<test id="s1-s5-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:44:37.136" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190912 15:44:46.222" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:44:46.222" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=16.7 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=15.4 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:44:37.135" endtime="20190912 15:44:46.222"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:46.222" endtime="20190912 15:44:46.223"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190912 15:44:37.135" endtime="20190912 15:44:46.223" critical="yes"></status>
+</test>
+<test id="s1-s5-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:44:46.224" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190912 15:44:55.324" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:44:55.324" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=18.6 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=17.7 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:44:46.224" endtime="20190912 15:44:55.324"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:44:55.325" endtime="20190912 15:44:55.325"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190912 15:44:46.223" endtime="20190912 15:44:55.325" critical="yes"></status>
+</test>
+<test id="s1-s5-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:44:55.326" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190912 15:45:04.406" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:45:04.406" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=9.74 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=54.4 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190912 15:44:55.326" endtime="20190912 15:45:04.406"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:45:04.406" endtime="20190912 15:45:04.407"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:44:55.325" endtime="20190912 15:45:04.407" critical="yes"></status>
+</test>
+<test id="s1-s5-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190912 15:45:04.407" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190912 15:45:13.469" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190912 15:45:13.469" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=0.063 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=0.061 ms
+64 bytes from 10.0.11.15: icmp_se...</msg>
+<status status="PASS" starttime="20190912 15:45:04.407" endtime="20190912 15:45:13.469"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190912 15:45:13.469" endtime="20190912 15:45:13.469"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190912 15:45:04.407" endtime="20190912 15:45:13.469" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190912 15:45:13.470" endtime="20190912 15:45:13.470"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190912 15:44:26.860" endtime="20190912 15:45:13.470"></status>
+</suite>
+<status status="PASS" starttime="20190912 15:41:19.649" endtime="20190912 15:45:13.474"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="25" fail="0">Critical Tests</stat>
+<stat pass="25" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="25" fail="0" id="s1" name="Intra Vni">Intra Vni</stat>
+<stat pass="5" fail="0" id="s1-s1" name="Centos1 ping">Intra Vni.Centos1 ping</stat>
+<stat pass="5" fail="0" id="s1-s2" name="Centos2 ping">Intra Vni.Centos2 ping</stat>
+<stat pass="5" fail="0" id="s1-s3" name="Centos3 ping">Intra Vni.Centos3 ping</stat>
+<stat pass="5" fail="0" id="s1-s4" name="Centos4 ping">Intra Vni.Centos4 ping</stat>
+<stat pass="5" fail="0" id="s1-s5" name="Centos5 ping">Intra Vni.Centos5 ping</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

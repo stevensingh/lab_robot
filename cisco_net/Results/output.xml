@@ -1,0 +1,3901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on darwin)" generated="20190904 12:46:04.907" rpa="false">
+<suite id="s1" name="Tests" source="/Users/stevensingh/robot/cisco_net/Tests">
+<suite id="s1-s1" name="Intra Vni" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni">
+<suite id="s1-s1-s1" name="Centos1 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos1_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:05.073" endtime="20190904 12:46:05.074"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:46:05.074" level="INFO">Logging into 'centos1:22' as 'root'.</msg>
+<msg timestamp="20190904 12:46:07.234" level="INFO">Read output: Last login: Wed Aug 28 13:43:16 2019 from 192.168.1.79
+[root@Centos1 ~]#</msg>
+<status status="PASS" starttime="20190904 12:46:05.074" endtime="20190904 12:46:07.234"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:46:05.073" endtime="20190904 12:46:07.235"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:46:07.236" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190904 12:46:16.278" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:46:16.278" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=0.045 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=0.044 ms
+64 bytes from 10.0.11.11: icmp_se...</msg>
+<status status="PASS" starttime="20190904 12:46:07.236" endtime="20190904 12:46:16.279"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:16.279" endtime="20190904 12:46:16.279"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190904 12:46:07.235" endtime="20190904 12:46:16.280" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:46:16.281" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190904 12:46:25.387" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:46:25.388" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=28.8 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=25.2 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:46:16.280" endtime="20190904 12:46:25.388"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:25.388" endtime="20190904 12:46:25.388"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190904 12:46:16.280" endtime="20190904 12:46:25.389" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:46:25.390" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190904 12:46:34.487" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:46:34.487" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=52.5 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=17.0 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:46:25.389" endtime="20190904 12:46:34.487"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:34.487" endtime="20190904 12:46:34.487"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190904 12:46:25.389" endtime="20190904 12:46:34.487" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:46:34.488" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190904 12:46:43.592" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:46:43.593" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=48.6 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=35.0 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:46:34.488" endtime="20190904 12:46:43.593"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:43.593" endtime="20190904 12:46:43.593"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:46:34.487" endtime="20190904 12:46:43.593" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:46:43.595" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190904 12:46:52.683" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:46:52.683" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=44.7 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=15.2 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:46:43.594" endtime="20190904 12:46:52.683"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:52.683" endtime="20190904 12:46:52.684"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:46:43.594" endtime="20190904 12:46:52.684" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:46:52.686" endtime="20190904 12:46:52.686"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190904 12:46:04.928" endtime="20190904 12:46:52.686"></status>
+</suite>
+<suite id="s1-s1-s2" name="Centos2 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos2_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:46:52.691" endtime="20190904 12:46:52.691"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:46:52.692" level="INFO">Logging into 'centos2:22' as 'root'.</msg>
+<msg timestamp="20190904 12:46:54.194" level="INFO">Read output: Last login: Wed Aug 28 13:44:03 2019 from 192.168.1.79
+[root@Centos2 ~]#</msg>
+<status status="PASS" starttime="20190904 12:46:52.691" endtime="20190904 12:46:54.194"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:46:52.691" endtime="20190904 12:46:54.195"></status>
+</kw>
+<test id="s1-s1-s2-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:46:54.196" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190904 12:47:03.243" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:03.243" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=9.45 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=9.93 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:46:54.195" endtime="20190904 12:47:03.243"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:03.243" endtime="20190904 12:47:03.244"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190904 12:46:54.195" endtime="20190904 12:47:03.244" critical="yes"></status>
+</test>
+<test id="s1-s1-s2-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:03.245" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190904 12:47:12.304" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:12.304" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=0.045 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=0.038 ms
+64 bytes from 10.0.11.12: icmp_se...</msg>
+<status status="PASS" starttime="20190904 12:47:03.244" endtime="20190904 12:47:12.304"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:12.305" endtime="20190904 12:47:12.305"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190904 12:47:03.244" endtime="20190904 12:47:12.305" critical="yes"></status>
+</test>
+<test id="s1-s1-s2-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:12.306" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190904 12:47:21.397" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:21.397" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=27.8 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=36.3 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:47:12.306" endtime="20190904 12:47:21.397"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:21.397" endtime="20190904 12:47:21.398"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190904 12:47:12.306" endtime="20190904 12:47:21.398" critical="yes"></status>
+</test>
+<test id="s1-s1-s2-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:21.399" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190904 12:47:30.490" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:30.491" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=26.2 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=18.1 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:47:21.399" endtime="20190904 12:47:30.491"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:30.491" endtime="20190904 12:47:30.491"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:47:21.398" endtime="20190904 12:47:30.492" critical="yes"></status>
+</test>
+<test id="s1-s1-s2-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:30.492" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190904 12:47:39.598" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:39.598" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=28.7 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=16.6 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:47:30.492" endtime="20190904 12:47:39.599"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:39.599" endtime="20190904 12:47:39.599"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:47:30.492" endtime="20190904 12:47:39.599" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:47:39.600" endtime="20190904 12:47:39.601"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190904 12:46:52.689" endtime="20190904 12:47:39.601"></status>
+</suite>
+<suite id="s1-s1-s3" name="Centos3 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos3_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:39.606" endtime="20190904 12:47:39.607"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:47:39.607" level="INFO">Logging into 'centos3:22' as 'root'.</msg>
+<msg timestamp="20190904 12:47:41.025" level="INFO">Read output: Last login: Wed Aug 28 13:44:50 2019 from 192.168.1.79
+[root@Centos3 ~]#</msg>
+<status status="PASS" starttime="20190904 12:47:39.607" endtime="20190904 12:47:41.026"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:47:39.606" endtime="20190904 12:47:41.026"></status>
+</kw>
+<test id="s1-s1-s3-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:41.027" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190904 12:47:50.081" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:50.081" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=71.8 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=16.5 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:47:41.026" endtime="20190904 12:47:50.081"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:50.082" endtime="20190904 12:47:50.082"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190904 12:47:41.026" endtime="20190904 12:47:50.082" critical="yes"></status>
+</test>
+<test id="s1-s1-s3-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:50.083" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190904 12:47:59.169" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:47:59.170" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=16.1 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=18.4 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:47:50.083" endtime="20190904 12:47:59.170"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:47:59.170" endtime="20190904 12:47:59.170"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190904 12:47:50.082" endtime="20190904 12:47:59.171" critical="yes"></status>
+</test>
+<test id="s1-s1-s3-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:47:59.172" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190904 12:48:08.227" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:48:08.227" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=0.067 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=0.060 ms
+64 bytes from 10.0.11.13: icmp_se...</msg>
+<status status="PASS" starttime="20190904 12:47:59.171" endtime="20190904 12:48:08.228"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:08.228" endtime="20190904 12:48:08.228"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190904 12:47:59.171" endtime="20190904 12:48:08.228" critical="yes"></status>
+</test>
+<test id="s1-s1-s3-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:48:08.229" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190904 12:48:17.331" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:48:17.331" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=28.0 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=17.7 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:48:08.229" endtime="20190904 12:48:17.331"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:17.331" endtime="20190904 12:48:17.332"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:48:08.229" endtime="20190904 12:48:17.332" critical="yes"></status>
+</test>
+<test id="s1-s1-s3-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:48:17.333" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190904 12:48:26.414" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:48:26.414" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=31.1 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=16.8 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:48:17.333" endtime="20190904 12:48:26.414"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:26.415" endtime="20190904 12:48:26.415"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:48:17.332" endtime="20190904 12:48:26.415" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:48:26.416" endtime="20190904 12:48:26.416"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190904 12:47:39.603" endtime="20190904 12:48:26.416"></status>
+</suite>
+<suite id="s1-s1-s4" name="Centos4 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos4_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:26.421" endtime="20190904 12:48:26.422"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:48:26.422" level="INFO">Logging into 'centos4:22' as 'root'.</msg>
+<msg timestamp="20190904 12:48:27.895" level="INFO">Read output: Last login: Wed Aug 28 13:45:37 2019 from 192.168.1.79
+[root@Centos4 ~]#</msg>
+<status status="PASS" starttime="20190904 12:48:26.422" endtime="20190904 12:48:27.895"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:48:26.421" endtime="20190904 12:48:27.895"></status>
+</kw>
+<test id="s1-s1-s4-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:48:27.896" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190904 12:48:36.952" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:48:36.952" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=17.2 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=16.9 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:48:27.896" endtime="20190904 12:48:36.953"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:36.953" endtime="20190904 12:48:36.953"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190904 12:48:27.895" endtime="20190904 12:48:36.953" critical="yes"></status>
+</test>
+<test id="s1-s1-s4-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:48:36.954" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190904 12:48:46.049" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:48:46.049" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=17.0 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=15.9 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:48:36.954" endtime="20190904 12:48:46.049"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:46.050" endtime="20190904 12:48:46.050"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190904 12:48:36.954" endtime="20190904 12:48:46.050" critical="yes"></status>
+</test>
+<test id="s1-s1-s4-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:48:46.051" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190904 12:48:55.150" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:48:55.150" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=19.1 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=20.6 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:48:46.051" endtime="20190904 12:48:55.150"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:48:55.150" endtime="20190904 12:48:55.151"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190904 12:48:46.050" endtime="20190904 12:48:55.151" critical="yes"></status>
+</test>
+<test id="s1-s1-s4-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:48:55.152" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190904 12:49:04.208" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:49:04.209" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=0.053 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=0.058 ms
+64 bytes from 10.0.11.14: icmp_se...</msg>
+<status status="PASS" starttime="20190904 12:48:55.152" endtime="20190904 12:49:04.209"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:04.209" endtime="20190904 12:49:04.209"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:48:55.151" endtime="20190904 12:49:04.210" critical="yes"></status>
+</test>
+<test id="s1-s1-s4-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:49:04.211" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190904 12:49:13.292" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:49:13.292" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=36.9 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=10.6 ms
+64 bytes from 10.0.11.15: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:49:04.210" endtime="20190904 12:49:13.292"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:13.292" endtime="20190904 12:49:13.293"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:49:04.210" endtime="20190904 12:49:13.293" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:49:13.294" endtime="20190904 12:49:13.295"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190904 12:48:26.419" endtime="20190904 12:49:13.295"></status>
+</suite>
+<suite id="s1-s1-s5" name="Centos5 ping" source="/Users/stevensingh/robot/cisco_net/Tests/intra_vni/Centos5_ping.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:13.300" endtime="20190904 12:49:13.300"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:49:13.301" level="INFO">Logging into 'centos5:22' as 'root'.</msg>
+<msg timestamp="20190904 12:49:15.234" level="INFO">Read output: Last login: Wed Aug 28 13:46:25 2019 from 192.168.1.79
+[root@Centos5 ~]#</msg>
+<status status="PASS" starttime="20190904 12:49:13.300" endtime="20190904 12:49:15.234"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:49:13.299" endtime="20190904 12:49:15.234"></status>
+</kw>
+<test id="s1-s1-s5-t1" name="Check Centos1 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.11</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:49:15.235" level="INFO">Executing command 'ping -c 10 10.0.11.11'.</msg>
+<msg timestamp="20190904 12:49:24.307" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:49:24.307" level="INFO">${output} = PING 10.0.11.11 (10.0.11.11) 56(84) bytes of data.
+64 bytes from 10.0.11.11: icmp_seq=1 ttl=64 time=15.8 ms
+64 bytes from 10.0.11.11: icmp_seq=2 ttl=64 time=16.9 ms
+64 bytes from 10.0.11.11: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:49:15.235" endtime="20190904 12:49:24.307"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.11</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:24.307" endtime="20190904 12:49:24.308"></status>
+</kw>
+<doc>ping Centos1</doc>
+<status status="PASS" starttime="20190904 12:49:15.235" endtime="20190904 12:49:24.308" critical="yes"></status>
+</test>
+<test id="s1-s1-s5-t2" name="Check Centos2 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.12</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:49:24.309" level="INFO">Executing command 'ping -c 10 10.0.11.12'.</msg>
+<msg timestamp="20190904 12:49:33.394" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:49:33.395" level="INFO">${output} = PING 10.0.11.12 (10.0.11.12) 56(84) bytes of data.
+64 bytes from 10.0.11.12: icmp_seq=1 ttl=64 time=16.6 ms
+64 bytes from 10.0.11.12: icmp_seq=2 ttl=64 time=23.6 ms
+64 bytes from 10.0.11.12: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:49:24.309" endtime="20190904 12:49:33.395"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.12</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:33.395" endtime="20190904 12:49:33.395"></status>
+</kw>
+<doc>ping Centos2</doc>
+<status status="PASS" starttime="20190904 12:49:24.308" endtime="20190904 12:49:33.396" critical="yes"></status>
+</test>
+<test id="s1-s1-s5-t3" name="Check Centos3 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.13</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:49:33.397" level="INFO">Executing command 'ping -c 10 10.0.11.13'.</msg>
+<msg timestamp="20190904 12:49:42.487" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:49:42.487" level="INFO">${output} = PING 10.0.11.13 (10.0.11.13) 56(84) bytes of data.
+64 bytes from 10.0.11.13: icmp_seq=1 ttl=64 time=16.9 ms
+64 bytes from 10.0.11.13: icmp_seq=2 ttl=64 time=17.1 ms
+64 bytes from 10.0.11.13: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:49:33.396" endtime="20190904 12:49:42.488"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.13</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:42.488" endtime="20190904 12:49:42.488"></status>
+</kw>
+<doc>ping Centos3</doc>
+<status status="PASS" starttime="20190904 12:49:33.396" endtime="20190904 12:49:42.488" critical="yes"></status>
+</test>
+<test id="s1-s1-s5-t4" name="Check Centos4 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.14</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:49:42.489" level="INFO">Executing command 'ping -c 10 10.0.11.14'.</msg>
+<msg timestamp="20190904 12:49:51.571" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:49:51.571" level="INFO">${output} = PING 10.0.11.14 (10.0.11.14) 56(84) bytes of data.
+64 bytes from 10.0.11.14: icmp_seq=1 ttl=64 time=9.65 ms
+64 bytes from 10.0.11.14: icmp_seq=2 ttl=64 time=9.88 ms
+64 bytes from 10.0.11.14: icmp_seq=...</msg>
+<status status="PASS" starttime="20190904 12:49:42.489" endtime="20190904 12:49:51.571"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.14</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:49:51.571" endtime="20190904 12:49:51.572"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:49:42.489" endtime="20190904 12:49:51.572" critical="yes"></status>
+</test>
+<test id="s1-s1-s5-t5" name="Check Centos5 Reachability">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping -c 10 10.0.11.15</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:49:51.573" level="INFO">Executing command 'ping -c 10 10.0.11.15'.</msg>
+<msg timestamp="20190904 12:50:00.633" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:00.634" level="INFO">${output} = PING 10.0.11.15 (10.0.11.15) 56(84) bytes of data.
+64 bytes from 10.0.11.15: icmp_seq=1 ttl=64 time=0.057 ms
+64 bytes from 10.0.11.15: icmp_seq=2 ttl=64 time=0.033 ms
+64 bytes from 10.0.11.15: icmp_se...</msg>
+<status status="PASS" starttime="20190904 12:49:51.573" endtime="20190904 12:50:00.634"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 10.0.11.15</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:00.634" endtime="20190904 12:50:00.634"></status>
+</kw>
+<doc>ping Centos4</doc>
+<status status="PASS" starttime="20190904 12:49:51.573" endtime="20190904 12:50:00.634" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:00.636" endtime="20190904 12:50:00.636"></status>
+</kw>
+<doc>Test Tenant1 Hosts</doc>
+<status status="PASS" starttime="20190904 12:49:13.297" endtime="20190904 12:50:00.636"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:46:04.927" endtime="20190904 12:50:00.641"></status>
+</suite>
+<suite id="s1-s2" name="Leaf1" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf1">
+<suite id="s1-s2-s1" name="Feature Check L1" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf1/Feature Check L1.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:00.651" endtime="20190904 12:50:00.651"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:00.653" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:03.188" level="INFO">Read output:</msg>
+<status status="PASS" starttime="20190904 12:50:00.651" endtime="20190904 12:50:03.188"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:00.651" endtime="20190904 12:50:03.188"></status>
+</kw>
+<test id="s1-s2-s1-t1" name="Check Leaf1 Feature Set">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show feature</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:03.189" level="INFO">Executing command 'show feature'.</msg>
+<msg timestamp="20190904 12:50:03.691" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:03.691" level="INFO">${output} = Feature Name          Instance  State   
+--------------------  --------  --------
+Flexlink               1          disabled
+analytics              1          disabled
+bash-shell             1        ...</msg>
+<status status="PASS" starttime="20190904 12:50:03.189" endtime="20190904 12:50:03.691"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bgp</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.692" endtime="20190904 12:50:03.692"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bash-shell</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.692" endtime="20190904 12:50:03.693"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nxapi</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.693" endtime="20190904 12:50:03.693"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>hmm</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.693" endtime="20190904 12:50:03.694"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>interface-vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.694" endtime="20190904 12:50:03.694"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.694" endtime="20190904 12:50:03.694"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>ospf</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.695" endtime="20190904 12:50:03.695"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>pim</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.695" endtime="20190904 12:50:03.695"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>scpServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.695" endtime="20190904 12:50:03.696"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>sshServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.696" endtime="20190904 12:50:03.696"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>vnseg_vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.696" endtime="20190904 12:50:03.696"></status>
+</kw>
+<doc>Check Features</doc>
+<status status="PASS" starttime="20190904 12:50:03.188" endtime="20190904 12:50:03.697" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:03.697" endtime="20190904 12:50:03.697"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:00.649" endtime="20190904 12:50:03.697"></status>
+</suite>
+<suite id="s1-s2-s2" name="NVE testL1" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf1/NVE_testL1.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:03.700" endtime="20190904 12:50:03.701"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:03.701" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:06.002" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K3#</msg>
+<status status="PASS" starttime="20190904 12:50:03.701" endtime="20190904 12:50:06.002"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:03.700" endtime="20190904 12:50:06.003"></status>
+</kw>
+<test id="s1-s2-s2-t1" name="Check Network Virtual Interface to N9K4">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.4</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:06.004" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.4'.</msg>
+<msg timestamp="20190904 12:50:06.400" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:06.400" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.4    Up    CP        00:03:40 0c8e.62f...</msg>
+<status status="PASS" starttime="20190904 12:50:06.003" endtime="20190904 12:50:06.401"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.4</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:06.401" endtime="20190904 12:50:06.401"></status>
+</kw>
+<doc>Check NVE interface to n9k4</doc>
+<status status="PASS" starttime="20190904 12:50:06.003" endtime="20190904 12:50:06.401" critical="yes"></status>
+</test>
+<test id="s1-s2-s2-t2" name="Check Network Virtual Interface to N9K5">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:06.402" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.5'.</msg>
+<msg timestamp="20190904 12:50:06.905" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:06.905" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.5    Up    CP        00:03:32 0c8e.62e...</msg>
+<status status="PASS" starttime="20190904 12:50:06.402" endtime="20190904 12:50:06.906"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.5</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:06.906" endtime="20190904 12:50:06.906"></status>
+</kw>
+<doc>Check NVE interface to n9k5</doc>
+<status status="PASS" starttime="20190904 12:50:06.401" endtime="20190904 12:50:06.906" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:06.907" endtime="20190904 12:50:06.907"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:03.698" endtime="20190904 12:50:06.907"></status>
+</suite>
+<suite id="s1-s2-s3" name="ospf Leaf1" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf1/ospf_Leaf1.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:06.911" endtime="20190904 12:50:06.912"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:06.912" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:09.248" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K3#</msg>
+<status status="PASS" starttime="20190904 12:50:06.912" endtime="20190904 12:50:09.248"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:06.911" endtime="20190904 12:50:09.248"></status>
+</kw>
+<test id="s1-s2-s3-t1" name="Check OSPF Neighbor to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:09.249" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:50:09.645" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:09.645" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.1     1 FULL/ -          00:08:47 172.16.0.1      Eth...</msg>
+<status status="PASS" starttime="20190904 12:50:09.249" endtime="20190904 12:50:09.645"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.1</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:09.645" endtime="20190904 12:50:09.645"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k1</doc>
+<status status="PASS" starttime="20190904 12:50:09.248" endtime="20190904 12:50:09.646" critical="yes"></status>
+</test>
+<test id="s1-s2-s3-t2" name="Check OSPF Neighbor to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:09.647" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:50:10.127" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:10.128" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.2     1 FULL/ -          00:08:47 172.16.0.13     Eth...</msg>
+<status status="PASS" starttime="20190904 12:50:09.646" endtime="20190904 12:50:10.128"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.2</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:10.128" endtime="20190904 12:50:10.128"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:50:09.646" endtime="20190904 12:50:10.129" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:10.129" endtime="20190904 12:50:10.130"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:06.908" endtime="20190904 12:50:10.130"></status>
+</suite>
+<suite id="s1-s2-s4" name="Ping All Loopbacks" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf1/ping_all_loopbacks.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:10.133" endtime="20190904 12:50:10.134"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:10.134" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:12.427" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K3#</msg>
+<status status="PASS" starttime="20190904 12:50:10.134" endtime="20190904 12:50:12.427"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:10.133" endtime="20190904 12:50:12.428"></status>
+</kw>
+<test id="s1-s2-s4-t1" name="Check Loopback Reachability to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:12.429" level="INFO">Executing command 'ping 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:50:14.883" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:14.884" level="INFO">${output} = PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: icmp_seq=0 ttl=254 time=3.376 ms
+64 bytes from 100.100.100.1: icmp_seq=1 ttl=254 time=2.618 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:50:12.428" endtime="20190904 12:50:14.884"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:14.884" endtime="20190904 12:50:14.884"></status>
+</kw>
+<doc>ping Spine 1 loopback N9k1</doc>
+<status status="PASS" starttime="20190904 12:50:12.428" endtime="20190904 12:50:14.885" critical="yes"></status>
+</test>
+<test id="s1-s2-s4-t2" name="Check Loopback Reachability to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:14.886" level="INFO">Executing command 'ping 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:50:17.467" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:17.467" level="INFO">${output} = PING 100.100.100.2 (100.100.100.2): 56 data bytes
+64 bytes from 100.100.100.2: icmp_seq=0 ttl=254 time=3.433 ms
+64 bytes from 100.100.100.2: icmp_seq=1 ttl=254 time=2.625 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:50:14.885" endtime="20190904 12:50:17.467"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:17.467" endtime="20190904 12:50:17.467"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:50:14.885" endtime="20190904 12:50:17.467" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:17.468" endtime="20190904 12:50:17.468"></status>
+</kw>
+<doc>Test Loopback reachability</doc>
+<status status="PASS" starttime="20190904 12:50:10.131" endtime="20190904 12:50:17.468"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:50:00.648" endtime="20190904 12:50:17.469"></status>
+</suite>
+<suite id="s1-s3" name="Leaf2" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf2">
+<suite id="s1-s3-s1" name="Feature Check L2" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf2/Feature Check L2.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:17.474" endtime="20190904 12:50:17.474"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:17.474" level="INFO">Logging into 'n9k4:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:21.027" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K4#</msg>
+<status status="PASS" starttime="20190904 12:50:17.474" endtime="20190904 12:50:21.027"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:17.473" endtime="20190904 12:50:21.028"></status>
+</kw>
+<test id="s1-s3-s1-t1" name="Check Leaf2 Feature Set">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show feature</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:21.029" level="INFO">Executing command 'show feature'.</msg>
+<msg timestamp="20190904 12:50:21.468" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:21.468" level="INFO">${output} = Feature Name          Instance  State   
+--------------------  --------  --------
+Flexlink               1          disabled
+analytics              1          disabled
+bash-shell             1        ...</msg>
+<status status="PASS" starttime="20190904 12:50:21.028" endtime="20190904 12:50:21.468"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bgp</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.469" endtime="20190904 12:50:21.469"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bash-shell</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.469" endtime="20190904 12:50:21.470"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nxapi</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.470" endtime="20190904 12:50:21.470"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>hmm</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.470" endtime="20190904 12:50:21.471"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>interface-vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.471" endtime="20190904 12:50:21.471"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.471" endtime="20190904 12:50:21.471"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>ospf</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.471" endtime="20190904 12:50:21.472"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>pim</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.472" endtime="20190904 12:50:21.472"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>scpServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.472" endtime="20190904 12:50:21.473"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>sshServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.473" endtime="20190904 12:50:21.473"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>vnseg_vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.473" endtime="20190904 12:50:21.473"></status>
+</kw>
+<doc>Check Features</doc>
+<status status="PASS" starttime="20190904 12:50:21.028" endtime="20190904 12:50:21.473" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:21.474" endtime="20190904 12:50:21.474"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:17.472" endtime="20190904 12:50:21.474"></status>
+</suite>
+<suite id="s1-s3-s2" name="NVE testL2" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf2/NVE_testL2.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:21.477" endtime="20190904 12:50:21.478"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:21.478" level="INFO">Logging into 'n9k4:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:23.798" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K4#</msg>
+<status status="PASS" starttime="20190904 12:50:21.478" endtime="20190904 12:50:23.798"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:21.477" endtime="20190904 12:50:23.798"></status>
+</kw>
+<test id="s1-s3-s2-t1" name="Check Network Virtual Interface to N9K3">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.3</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:23.799" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.3'.</msg>
+<msg timestamp="20190904 12:50:24.208" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:24.208" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.3    Up    CP        00:04:07 0c8e.622...</msg>
+<status status="PASS" starttime="20190904 12:50:23.799" endtime="20190904 12:50:24.208"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.3</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:24.209" endtime="20190904 12:50:24.209"></status>
+</kw>
+<doc>Check NVE interface to n9k3</doc>
+<status status="PASS" starttime="20190904 12:50:23.798" endtime="20190904 12:50:24.209" critical="yes"></status>
+</test>
+<test id="s1-s3-s2-t2" name="Check Network Virtual Interface to N9K5">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:24.210" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.5'.</msg>
+<msg timestamp="20190904 12:50:24.715" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:24.716" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.5    Up    CP        00:03:49 0c8e.62e...</msg>
+<status status="PASS" starttime="20190904 12:50:24.210" endtime="20190904 12:50:24.716"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.5</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:24.716" endtime="20190904 12:50:24.716"></status>
+</kw>
+<doc>Check NVE interface to n9k5</doc>
+<status status="PASS" starttime="20190904 12:50:24.209" endtime="20190904 12:50:24.717" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:24.717" endtime="20190904 12:50:24.718"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:21.475" endtime="20190904 12:50:24.718"></status>
+</suite>
+<suite id="s1-s3-s3" name="ospf Leaf2" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf2/ospf_Leaf2.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:24.721" endtime="20190904 12:50:24.722"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:24.722" level="INFO">Logging into 'n9k4:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:27.051" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K4#</msg>
+<status status="PASS" starttime="20190904 12:50:24.722" endtime="20190904 12:50:27.051"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:24.721" endtime="20190904 12:50:27.051"></status>
+</kw>
+<test id="s1-s3-s3-t1" name="Check OSPF Neighbor to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:27.052" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:50:27.471" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:27.472" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.1     1 FULL/ -          00:09:03 172.16.0.5      Eth...</msg>
+<status status="PASS" starttime="20190904 12:50:27.052" endtime="20190904 12:50:27.472"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.1</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:27.472" endtime="20190904 12:50:27.472"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k1</doc>
+<status status="PASS" starttime="20190904 12:50:27.051" endtime="20190904 12:50:27.473" critical="yes"></status>
+</test>
+<test id="s1-s3-s3-t2" name="Check OSPF Neighbor to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:27.474" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:50:27.975" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:27.976" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.2     1 FULL/ -          00:09:04 172.16.0.17     Eth...</msg>
+<status status="PASS" starttime="20190904 12:50:27.473" endtime="20190904 12:50:27.976"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.2</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:27.976" endtime="20190904 12:50:27.976"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:50:27.473" endtime="20190904 12:50:27.977" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:27.977" endtime="20190904 12:50:27.978"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 2 N9K4</doc>
+<status status="PASS" starttime="20190904 12:50:24.719" endtime="20190904 12:50:27.978"></status>
+</suite>
+<suite id="s1-s3-s4" name="Ping All Loopbacks" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf2/ping_all_loopbacks.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:27.982" endtime="20190904 12:50:27.982"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:27.982" level="INFO">Logging into 'n9k4:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:30.282" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K4#</msg>
+<status status="PASS" starttime="20190904 12:50:27.982" endtime="20190904 12:50:30.282"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:27.981" endtime="20190904 12:50:30.282"></status>
+</kw>
+<test id="s1-s3-s4-t1" name="Check Loopback Reachability to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:30.283" level="INFO">Executing command 'ping 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:50:32.758" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:32.759" level="INFO">${output} = PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: icmp_seq=0 ttl=254 time=3.485 ms
+64 bytes from 100.100.100.1: icmp_seq=1 ttl=254 time=2.34 ms
+64 bytes from 100.100.100.1...</msg>
+<status status="PASS" starttime="20190904 12:50:30.283" endtime="20190904 12:50:32.759"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:32.759" endtime="20190904 12:50:32.759"></status>
+</kw>
+<doc>ping Spine 1 loopback N9k1</doc>
+<status status="PASS" starttime="20190904 12:50:30.282" endtime="20190904 12:50:32.760" critical="yes"></status>
+</test>
+<test id="s1-s3-s4-t2" name="Check Loopback Reachability to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:32.760" level="INFO">Executing command 'ping 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:50:35.331" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:35.331" level="INFO">${output} = PING 100.100.100.2 (100.100.100.2): 56 data bytes
+64 bytes from 100.100.100.2: icmp_seq=0 ttl=254 time=3.386 ms
+64 bytes from 100.100.100.2: icmp_seq=1 ttl=254 time=2.731 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:50:32.760" endtime="20190904 12:50:35.331"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:35.331" endtime="20190904 12:50:35.332"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:50:32.760" endtime="20190904 12:50:35.332" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:35.332" endtime="20190904 12:50:35.333"></status>
+</kw>
+<doc>Test Loopback reachability</doc>
+<status status="PASS" starttime="20190904 12:50:27.979" endtime="20190904 12:50:35.333"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:50:17.471" endtime="20190904 12:50:35.335"></status>
+</suite>
+<suite id="s1-s4" name="Leaf3" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf3">
+<suite id="s1-s4-s1" name="Feature Check L3" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf3/Feature Check L3.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:35.344" endtime="20190904 12:50:35.344"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:35.344" level="INFO">Logging into 'n9k5:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:38.887" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K5#</msg>
+<status status="PASS" starttime="20190904 12:50:35.344" endtime="20190904 12:50:38.889"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:35.344" endtime="20190904 12:50:38.889"></status>
+</kw>
+<test id="s1-s4-s1-t1" name="Check Leaf3 Feature Set">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show feature</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:38.890" level="INFO">Executing command 'show feature'.</msg>
+<msg timestamp="20190904 12:50:39.379" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:39.379" level="INFO">${output} = Feature Name          Instance  State   
+--------------------  --------  --------
+Flexlink               1          disabled
+analytics              1          disabled
+bash-shell             1        ...</msg>
+<status status="PASS" starttime="20190904 12:50:38.890" endtime="20190904 12:50:39.379"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bgp</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.379" endtime="20190904 12:50:39.380"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bash-shell</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.380" endtime="20190904 12:50:39.380"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nxapi</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.380" endtime="20190904 12:50:39.381"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>hmm</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.381" endtime="20190904 12:50:39.381"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>interface-vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.381" endtime="20190904 12:50:39.381"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.382" endtime="20190904 12:50:39.382"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>ospf</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.382" endtime="20190904 12:50:39.382"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>pim</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.382" endtime="20190904 12:50:39.383"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>scpServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.383" endtime="20190904 12:50:39.383"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>sshServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.383" endtime="20190904 12:50:39.383"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>vnseg_vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.384" endtime="20190904 12:50:39.384"></status>
+</kw>
+<doc>Check Features</doc>
+<status status="PASS" starttime="20190904 12:50:38.889" endtime="20190904 12:50:39.384" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:39.385" endtime="20190904 12:50:39.385"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:35.338" endtime="20190904 12:50:39.385"></status>
+</suite>
+<suite id="s1-s4-s2" name="NVE testL3" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf3/NVE_testL3.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:39.388" endtime="20190904 12:50:39.388"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:39.388" level="INFO">Logging into 'n9k5:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:41.699" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K5#</msg>
+<status status="PASS" starttime="20190904 12:50:39.388" endtime="20190904 12:50:41.699"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:39.388" endtime="20190904 12:50:41.699"></status>
+</kw>
+<test id="s1-s4-s2-t1" name="Check Network Virtual interface to N9K3">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.3</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:41.700" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.3'.</msg>
+<msg timestamp="20190904 12:50:42.081" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:42.081" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.3    Up    CP        00:04:25 0c8e.622...</msg>
+<status status="PASS" starttime="20190904 12:50:41.700" endtime="20190904 12:50:42.081"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.3</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:42.081" endtime="20190904 12:50:42.082"></status>
+</kw>
+<doc>Check NVE interface to n9k3</doc>
+<status status="PASS" starttime="20190904 12:50:41.699" endtime="20190904 12:50:42.082" critical="yes"></status>
+</test>
+<test id="s1-s4-s2-t2" name="Check Network Virtual Interface to N9K4">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.4</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:42.083" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.4'.</msg>
+<msg timestamp="20190904 12:50:42.551" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:42.551" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.4    Up    CP        00:04:16 0c8e.62f...</msg>
+<status status="PASS" starttime="20190904 12:50:42.082" endtime="20190904 12:50:42.551"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.4</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:42.551" endtime="20190904 12:50:42.552"></status>
+</kw>
+<doc>Check NVE interface to n9k4</doc>
+<status status="PASS" starttime="20190904 12:50:42.082" endtime="20190904 12:50:42.552" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:42.553" endtime="20190904 12:50:42.553"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:39.386" endtime="20190904 12:50:42.553"></status>
+</suite>
+<suite id="s1-s4-s3" name="ospf Leaf3" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf3/ospf_Leaf3.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:42.557" endtime="20190904 12:50:42.557"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:42.557" level="INFO">Logging into 'n9k5:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:44.863" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K5#</msg>
+<status status="PASS" starttime="20190904 12:50:42.557" endtime="20190904 12:50:44.863"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:42.557" endtime="20190904 12:50:44.863"></status>
+</kw>
+<test id="s1-s4-s3-t1" name="Check OSPF Neighbor to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:44.864" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:50:45.264" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:45.264" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.1     1 FULL/ -          00:09:23 172.16.0.21     Eth...</msg>
+<status status="PASS" starttime="20190904 12:50:44.864" endtime="20190904 12:50:45.264"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.1</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:45.264" endtime="20190904 12:50:45.265"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k1</doc>
+<status status="PASS" starttime="20190904 12:50:44.863" endtime="20190904 12:50:45.265" critical="yes"></status>
+</test>
+<test id="s1-s4-s3-t2" name="Check OSPF Neighbor to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:45.266" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:50:45.720" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:45.720" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.2     1 FULL/ -          00:09:22 172.16.0.9      Eth...</msg>
+<status status="PASS" starttime="20190904 12:50:45.266" endtime="20190904 12:50:45.720"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.2</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:45.720" endtime="20190904 12:50:45.720"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:50:45.265" endtime="20190904 12:50:45.721" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:45.721" endtime="20190904 12:50:45.722"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 3 N9K5</doc>
+<status status="PASS" starttime="20190904 12:50:42.554" endtime="20190904 12:50:45.722"></status>
+</suite>
+<suite id="s1-s4-s4" name="Ping All Loopbacks" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf3/ping_all_loopbacks.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:45.726" endtime="20190904 12:50:45.726"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:45.726" level="INFO">Logging into 'n9k5:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:48.012" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K5#</msg>
+<status status="PASS" starttime="20190904 12:50:45.726" endtime="20190904 12:50:48.013"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:45.725" endtime="20190904 12:50:48.013"></status>
+</kw>
+<test id="s1-s4-s4-t1" name="Check Loopback Reachability to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:48.013" level="INFO">Executing command 'ping 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:50:50.483" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:50.484" level="INFO">${output} = PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: icmp_seq=0 ttl=254 time=3.626 ms
+64 bytes from 100.100.100.1: icmp_seq=1 ttl=254 time=2.951 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:50:48.013" endtime="20190904 12:50:50.484"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:50.484" endtime="20190904 12:50:50.484"></status>
+</kw>
+<doc>ping Spine 1 loopback N9k1</doc>
+<status status="PASS" starttime="20190904 12:50:48.013" endtime="20190904 12:50:50.484" critical="yes"></status>
+</test>
+<test id="s1-s4-s4-t2" name="Check Loopback Reachability to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:50.486" level="INFO">Executing command 'ping 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:50:53.050" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:53.051" level="INFO">${output} = PING 100.100.100.2 (100.100.100.2): 56 data bytes
+64 bytes from 100.100.100.2: icmp_seq=0 ttl=254 time=3.344 ms
+64 bytes from 100.100.100.2: icmp_seq=1 ttl=254 time=2.807 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:50:50.485" endtime="20190904 12:50:53.051"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:53.051" endtime="20190904 12:50:53.051"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:50:50.485" endtime="20190904 12:50:53.052" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:53.052" endtime="20190904 12:50:53.053"></status>
+</kw>
+<doc>Test Loopback reachability</doc>
+<status status="PASS" starttime="20190904 12:50:45.723" endtime="20190904 12:50:53.053"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:50:35.336" endtime="20190904 12:50:53.055"></status>
+</suite>
+<suite id="s1-s5" name="Leaf4" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf4">
+<suite id="s1-s5-s1" name="Feature Check L4" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf4/Feature Check L4.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:53.061" endtime="20190904 12:50:53.061"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:53.061" level="INFO">Logging into 'n9k6:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:55.617" level="INFO">Read output:</msg>
+<status status="PASS" starttime="20190904 12:50:53.061" endtime="20190904 12:50:55.617"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:53.060" endtime="20190904 12:50:55.617"></status>
+</kw>
+<test id="s1-s5-s1-t1" name="Check Leaf4 Feature Set">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show feature</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:55.618" level="INFO">Executing command 'show feature'.</msg>
+<msg timestamp="20190904 12:50:56.095" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:56.096" level="INFO">${output} = Feature Name          Instance  State   
+--------------------  --------  --------
+Flexlink               1          disabled
+analytics              1          disabled
+bash-shell             1        ...</msg>
+<status status="PASS" starttime="20190904 12:50:55.618" endtime="20190904 12:50:56.096"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bgp</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.096" endtime="20190904 12:50:56.097"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bash-shell</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.097" endtime="20190904 12:50:56.097"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nxapi</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.098" endtime="20190904 12:50:56.098"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>hmm</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.098" endtime="20190904 12:50:56.098"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>interface-vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.099" endtime="20190904 12:50:56.099"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.099" endtime="20190904 12:50:56.099"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>ospf</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.099" endtime="20190904 12:50:56.100"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>pim</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.100" endtime="20190904 12:50:56.100"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>scpServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.100" endtime="20190904 12:50:56.101"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>sshServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.101" endtime="20190904 12:50:56.101"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>vnseg_vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.101" endtime="20190904 12:50:56.101"></status>
+</kw>
+<doc>Check Features</doc>
+<status status="PASS" starttime="20190904 12:50:55.617" endtime="20190904 12:50:56.101" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:56.102" endtime="20190904 12:50:56.102"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:53.059" endtime="20190904 12:50:56.102"></status>
+</suite>
+<suite id="s1-s5-s2" name="NVE testL4" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf4/NVE_testL4.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:56.105" endtime="20190904 12:50:56.106"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:56.106" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:50:58.386" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K3#</msg>
+<status status="PASS" starttime="20190904 12:50:56.106" endtime="20190904 12:50:58.386"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:56.105" endtime="20190904 12:50:58.386"></status>
+</kw>
+<test id="s1-s5-s2-t1" name="Check OSPF Neighbor to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.4</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:58.387" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.4'.</msg>
+<msg timestamp="20190904 12:50:58.872" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:58.872" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.4    Up    CP        00:04:33 0c8e.62f...</msg>
+<status status="PASS" starttime="20190904 12:50:58.387" endtime="20190904 12:50:58.872"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.4</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:58.872" endtime="20190904 12:50:58.873"></status>
+</kw>
+<doc>Check NVE interface to nk94</doc>
+<status status="PASS" starttime="20190904 12:50:58.386" endtime="20190904 12:50:58.873" critical="yes"></status>
+</test>
+<test id="s1-s5-s2-t2" name="Check OSPF Neighbor to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show nve peers peer-ip 100.100.100.5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:50:58.874" level="INFO">Executing command 'show nve peers peer-ip 100.100.100.5'.</msg>
+<msg timestamp="20190904 12:50:59.374" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:50:59.374" level="INFO">${output} = Interface Peer-IP          State LearnType Uptime   Router-Mac       
+--------- ---------------  ----- --------- -------- -----------------
+nve1      100.100.100.5    Up    CP        00:04:24 0c8e.62e...</msg>
+<status status="PASS" starttime="20190904 12:50:58.874" endtime="20190904 12:50:59.374"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve1</arg>
+<arg>100.100.100.5</arg>
+<arg>Up</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:59.374" endtime="20190904 12:50:59.375"></status>
+</kw>
+<doc>Check NVE interface to n9k5</doc>
+<status status="PASS" starttime="20190904 12:50:58.873" endtime="20190904 12:50:59.375" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:50:59.375" endtime="20190904 12:50:59.376"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:50:56.103" endtime="20190904 12:50:59.376"></status>
+</suite>
+<suite id="s1-s5-s3" name="ospf Leaf4" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf4/ospf_Leaf4.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:50:59.379" endtime="20190904 12:50:59.380"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:50:59.380" level="INFO">Logging into 'n9k6:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:00.696" level="INFO">Read output:</msg>
+<status status="PASS" starttime="20190904 12:50:59.380" endtime="20190904 12:51:00.696"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:50:59.379" endtime="20190904 12:51:00.697"></status>
+</kw>
+<test id="s1-s5-s3-t1" name="Check OSPF Neighbor to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:00.698" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:51:01.084" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:01.085" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.1     1 FULL/ -          00:09:33 172.16.0.25     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:00.697" endtime="20190904 12:51:01.085"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.1</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:01.085" endtime="20190904 12:51:01.085"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k1</doc>
+<status status="PASS" starttime="20190904 12:51:00.697" endtime="20190904 12:51:01.086" critical="yes"></status>
+</test>
+<test id="s1-s5-s3-t2" name="Check OSPF Neighbor to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:01.087" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:51:01.570" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:01.571" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.2     1 FULL/ -          00:09:36 172.16.0.29     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:01.087" endtime="20190904 12:51:01.571"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.2</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:01.571" endtime="20190904 12:51:01.571"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:51:01.086" endtime="20190904 12:51:01.572" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:01.572" endtime="20190904 12:51:01.573"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 3 N9K5</doc>
+<status status="PASS" starttime="20190904 12:50:59.377" endtime="20190904 12:51:01.573"></status>
+</suite>
+<suite id="s1-s5-s4" name="Ping All Loopbacks" source="/Users/stevensingh/robot/cisco_net/Tests/Leaf4/ping_all_loopbacks.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:01.577" endtime="20190904 12:51:01.577"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:01.577" level="INFO">Logging into 'n9k6:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:03.877" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K6#</msg>
+<status status="PASS" starttime="20190904 12:51:01.577" endtime="20190904 12:51:03.877"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:01.576" endtime="20190904 12:51:03.878"></status>
+</kw>
+<test id="s1-s5-s4-t1" name="Check Loopback Reachability to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:03.879" level="INFO">Executing command 'ping 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:51:06.414" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:06.415" level="INFO">${output} = PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: icmp_seq=0 ttl=254 time=3.165 ms
+64 bytes from 100.100.100.1: icmp_seq=1 ttl=254 time=2.673 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:51:03.879" endtime="20190904 12:51:06.415"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:06.415" endtime="20190904 12:51:06.415"></status>
+</kw>
+<doc>ping Spine 1 loopback N9k1</doc>
+<status status="PASS" starttime="20190904 12:51:03.878" endtime="20190904 12:51:06.415" critical="yes"></status>
+</test>
+<test id="s1-s5-s4-t2" name="Check Loopback Reachability to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:06.417" level="INFO">Executing command 'ping 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:51:09.172" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:09.173" level="INFO">${output} = PING 100.100.100.2 (100.100.100.2): 56 data bytes
+64 bytes from 100.100.100.2: icmp_seq=0 ttl=254 time=3.394 ms
+64 bytes from 100.100.100.2: icmp_seq=1 ttl=254 time=3.022 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:51:06.416" endtime="20190904 12:51:09.173"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:09.173" endtime="20190904 12:51:09.173"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:51:06.416" endtime="20190904 12:51:09.174" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:09.174" endtime="20190904 12:51:09.175"></status>
+</kw>
+<doc>Test Loopback reachability</doc>
+<status status="PASS" starttime="20190904 12:51:01.574" endtime="20190904 12:51:09.175"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:50:53.057" endtime="20190904 12:51:09.177"></status>
+</suite>
+<suite id="s1-s6" name="Spine1" source="/Users/stevensingh/robot/cisco_net/Tests/Spine1">
+<suite id="s1-s6-s1" name="Feature Check SP1" source="/Users/stevensingh/robot/cisco_net/Tests/Spine1/Feature Check SP1.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:09.182" endtime="20190904 12:51:09.182"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:09.182" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:11.496" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K3#</msg>
+<status status="PASS" starttime="20190904 12:51:09.182" endtime="20190904 12:51:11.496"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:09.182" endtime="20190904 12:51:11.497"></status>
+</kw>
+<test id="s1-s6-s1-t1" name="Check Leaf1 Feature Set">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show feature</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:11.498" level="INFO">Executing command 'show feature'.</msg>
+<msg timestamp="20190904 12:51:11.965" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:11.965" level="INFO">${output} = Feature Name          Instance  State   
+--------------------  --------  --------
+Flexlink               1          disabled
+analytics              1          disabled
+bash-shell             1        ...</msg>
+<status status="PASS" starttime="20190904 12:51:11.497" endtime="20190904 12:51:11.965"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bgp</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.966" endtime="20190904 12:51:11.966"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bash-shell</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.966" endtime="20190904 12:51:11.966"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nxapi</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.967" endtime="20190904 12:51:11.967"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>hmm</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.967" endtime="20190904 12:51:11.967"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>interface-vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.968" endtime="20190904 12:51:11.969"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve</arg>
+<arg>1</arg>
+<arg>disabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.969" endtime="20190904 12:51:11.969"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>ospf</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.969" endtime="20190904 12:51:11.970"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>pim</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.970" endtime="20190904 12:51:11.970"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>scpServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.971" endtime="20190904 12:51:11.971"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>sshServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.971" endtime="20190904 12:51:11.971"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>vnseg_vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.971" endtime="20190904 12:51:11.972"></status>
+</kw>
+<doc>Check Features</doc>
+<status status="PASS" starttime="20190904 12:51:11.497" endtime="20190904 12:51:11.972" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:11.972" endtime="20190904 12:51:11.973"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:51:09.180" endtime="20190904 12:51:11.973"></status>
+</suite>
+<suite id="s1-s6-s2" name="Ospf Spine1" source="/Users/stevensingh/robot/cisco_net/Tests/Spine1/ospf_spine1.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:11.976" endtime="20190904 12:51:11.976"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:11.976" level="INFO">Logging into 'n9k1:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:15.682" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K1#</msg>
+<status status="PASS" starttime="20190904 12:51:11.976" endtime="20190904 12:51:15.682"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:11.975" endtime="20190904 12:51:15.682"></status>
+</kw>
+<test id="s1-s6-s2-t1" name="Check OSPF Neighbor to N9K3">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.3</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:15.683" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.3'.</msg>
+<msg timestamp="20190904 12:51:16.086" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:16.086" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.3     1 FULL/ -          00:09:53 172.16.0.2      Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:15.683" endtime="20190904 12:51:16.086"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.3</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:16.087" endtime="20190904 12:51:16.087"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k3</doc>
+<status status="PASS" starttime="20190904 12:51:15.682" endtime="20190904 12:51:16.087" critical="yes"></status>
+</test>
+<test id="s1-s6-s2-t2" name="Check OSPF Neighbor to N9K4">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.4</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:16.088" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.4'.</msg>
+<msg timestamp="20190904 12:51:16.625" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:16.625" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.4     1 FULL/ -          00:09:52 172.16.0.6      Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:16.088" endtime="20190904 12:51:16.625"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.4</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:16.625" endtime="20190904 12:51:16.626"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k4</doc>
+<status status="PASS" starttime="20190904 12:51:16.087" endtime="20190904 12:51:16.626" critical="yes"></status>
+</test>
+<test id="s1-s6-s2-t3" name="Check OSPF Neighbor to N9K5">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:16.627" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.5'.</msg>
+<msg timestamp="20190904 12:51:17.133" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:17.133" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.5     1 FULL/ -          00:09:55 172.16.0.22     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:16.627" endtime="20190904 12:51:17.133"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.5</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/3</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:17.134" endtime="20190904 12:51:17.134"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k5</doc>
+<status status="PASS" starttime="20190904 12:51:16.626" endtime="20190904 12:51:17.134" critical="yes"></status>
+</test>
+<test id="s1-s6-s2-t4" name="Check OSPF Neighbor to N9K6">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.6</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:17.135" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.6'.</msg>
+<msg timestamp="20190904 12:51:17.607" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:17.607" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.6     1 FULL/ -          00:09:49 172.16.0.26     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:17.135" endtime="20190904 12:51:17.607"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.6</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/4</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:17.607" endtime="20190904 12:51:17.608"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k6</doc>
+<status status="PASS" starttime="20190904 12:51:17.134" endtime="20190904 12:51:17.608" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:17.609" endtime="20190904 12:51:17.609"></status>
+</kw>
+<doc>Test all ospf neibours Spine 1</doc>
+<status status="PASS" starttime="20190904 12:51:11.973" endtime="20190904 12:51:17.610"></status>
+</suite>
+<suite id="s1-s6-s3" name="Ping All Loopbacks" source="/Users/stevensingh/robot/cisco_net/Tests/Spine1/ping_all_loopbacks.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:17.613" endtime="20190904 12:51:17.614"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:17.614" level="INFO">Logging into 'n9k1:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:19.897" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K1#</msg>
+<status status="PASS" starttime="20190904 12:51:17.614" endtime="20190904 12:51:19.897"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:17.613" endtime="20190904 12:51:19.897"></status>
+</kw>
+<test id="s1-s6-s3-t1" name="Check Loopback Reachability to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:19.899" level="INFO">Executing command 'ping 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:51:22.357" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:22.357" level="INFO">${output} = PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: icmp_seq=0 ttl=255 time=0.663 ms
+64 bytes from 100.100.100.1: icmp_seq=1 ttl=255 time=1.374 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:51:19.898" endtime="20190904 12:51:22.357"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:22.358" endtime="20190904 12:51:22.358"></status>
+</kw>
+<doc>ping Spine 1 loopback N9k1</doc>
+<status status="PASS" starttime="20190904 12:51:19.898" endtime="20190904 12:51:22.358" critical="yes"></status>
+</test>
+<test id="s1-s6-s3-t2" name="Check Loopback Reachability to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:22.359" level="INFO">Executing command 'ping 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:51:24.942" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:24.942" level="INFO">${output} = PING 100.100.100.2 (100.100.100.2): 56 data bytes
+64 bytes from 100.100.100.2: icmp_seq=0 ttl=253 time=5.853 ms
+64 bytes from 100.100.100.2: icmp_seq=1 ttl=253 time=4.834 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:51:22.359" endtime="20190904 12:51:24.942"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:24.942" endtime="20190904 12:51:24.943"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:51:22.358" endtime="20190904 12:51:24.944" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:24.944" endtime="20190904 12:51:24.945"></status>
+</kw>
+<doc>Test Loopback reachability</doc>
+<status status="PASS" starttime="20190904 12:51:17.611" endtime="20190904 12:51:24.945"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:51:09.179" endtime="20190904 12:51:24.947"></status>
+</suite>
+<suite id="s1-s7" name="Spine2" source="/Users/stevensingh/robot/cisco_net/Tests/Spine2">
+<suite id="s1-s7-s1" name="Feature Check SP2" source="/Users/stevensingh/robot/cisco_net/Tests/Spine2/Feature Check SP2.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:24.953" endtime="20190904 12:51:24.953"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:24.953" level="INFO">Logging into 'n9k3:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:27.251" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K3#</msg>
+<status status="PASS" starttime="20190904 12:51:24.953" endtime="20190904 12:51:27.252"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:24.953" endtime="20190904 12:51:27.252"></status>
+</kw>
+<test id="s1-s7-s1-t1" name="Check Leaf1 Feature Set">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show feature</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:27.253" level="INFO">Executing command 'show feature'.</msg>
+<msg timestamp="20190904 12:51:27.677" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:27.677" level="INFO">${output} = Feature Name          Instance  State   
+--------------------  --------  --------
+Flexlink               1          disabled
+analytics              1          disabled
+bash-shell             1        ...</msg>
+<status status="PASS" starttime="20190904 12:51:27.252" endtime="20190904 12:51:27.677"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bgp</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.677" endtime="20190904 12:51:27.678"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>bash-shell</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.678" endtime="20190904 12:51:27.678"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nxapi</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.678" endtime="20190904 12:51:27.678"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>hmm</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.679" endtime="20190904 12:51:27.679"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>interface-vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.679" endtime="20190904 12:51:27.679"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>nve</arg>
+<arg>1</arg>
+<arg>disabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.679" endtime="20190904 12:51:27.680"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>ospf</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.680" endtime="20190904 12:51:27.680"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>pim</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.680" endtime="20190904 12:51:27.680"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>scpServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.681" endtime="20190904 12:51:27.681"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>sshServer</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.681" endtime="20190904 12:51:27.681"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>vnseg_vlan</arg>
+<arg>1</arg>
+<arg>enabled</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.681" endtime="20190904 12:51:27.682"></status>
+</kw>
+<doc>Check Features</doc>
+<status status="PASS" starttime="20190904 12:51:27.252" endtime="20190904 12:51:27.682" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:27.682" endtime="20190904 12:51:27.682"></status>
+</kw>
+<doc>Test all ospf neibours Leaf 1 N9K3</doc>
+<status status="PASS" starttime="20190904 12:51:24.951" endtime="20190904 12:51:27.682"></status>
+</suite>
+<suite id="s1-s7-s2" name="Ospf Spine2" source="/Users/stevensingh/robot/cisco_net/Tests/Spine2/ospf_spine2.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:27.685" endtime="20190904 12:51:27.685"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:27.686" level="INFO">Logging into 'n9k2:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:31.448" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K2#</msg>
+<status status="PASS" starttime="20190904 12:51:27.685" endtime="20190904 12:51:31.448"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:27.685" endtime="20190904 12:51:31.448"></status>
+</kw>
+<test id="s1-s7-s2-t1" name="Check OSPF Neighbor to N9K3">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.3</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:31.449" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.3'.</msg>
+<msg timestamp="20190904 12:51:31.844" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:31.844" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.3     1 FULL/ -          00:10:08 172.16.0.14     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:31.449" endtime="20190904 12:51:31.844"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.3</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:31.844" endtime="20190904 12:51:31.845"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k3</doc>
+<status status="PASS" starttime="20190904 12:51:31.448" endtime="20190904 12:51:31.845" critical="yes"></status>
+</test>
+<test id="s1-s7-s2-t2" name="Check OSPF Neighbor to N9K4">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.4</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:31.846" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.4'.</msg>
+<msg timestamp="20190904 12:51:32.318" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:32.318" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.4     1 FULL/ -          00:10:08 172.16.0.18     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:31.846" endtime="20190904 12:51:32.318"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.4</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:32.319" endtime="20190904 12:51:32.319"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k4</doc>
+<status status="PASS" starttime="20190904 12:51:31.845" endtime="20190904 12:51:32.319" critical="yes"></status>
+</test>
+<test id="s1-s7-s2-t3" name="Check OSPF Neighbor to N9K5">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:32.320" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.5'.</msg>
+<msg timestamp="20190904 12:51:32.788" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:32.788" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.5     1 FULL/ -          00:10:09 172.16.0.10     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:32.320" endtime="20190904 12:51:32.788"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.5</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/3</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:32.788" endtime="20190904 12:51:32.789"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k5</doc>
+<status status="PASS" starttime="20190904 12:51:32.319" endtime="20190904 12:51:32.789" critical="yes"></status>
+</test>
+<test id="s1-s7-s2-t4" name="Check OSPF Neighbor to N9K6">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>show ip ospf neighbors 100.100.100.6</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:32.790" level="INFO">Executing command 'show ip ospf neighbors 100.100.100.6'.</msg>
+<msg timestamp="20190904 12:51:33.273" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:33.273" level="INFO">${output} =  OSPF Process ID 1 VRF default
+ Total number of neighbors: 4
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 100.100.100.6     1 FULL/ -          00:10:08 172.16.0.30     Eth...</msg>
+<status status="PASS" starttime="20190904 12:51:32.790" endtime="20190904 12:51:33.273"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>100.100.100.6</arg>
+<arg>1 FULL/</arg>
+<arg>Eth1/4</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:33.273" endtime="20190904 12:51:33.274"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k6</doc>
+<status status="PASS" starttime="20190904 12:51:32.789" endtime="20190904 12:51:33.274" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:33.275" endtime="20190904 12:51:33.276"></status>
+</kw>
+<doc>Test all ospf neibours Spine 2</doc>
+<status status="PASS" starttime="20190904 12:51:27.683" endtime="20190904 12:51:33.276"></status>
+</suite>
+<suite id="s1-s7-s3" name="Ping All Loopbacks" source="/Users/stevensingh/robot/cisco_net/Tests/Spine2/ping_all_loopbacks.robot">
+<kw name="Open Connection And Log In" type="setup">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${HOST}</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:33.280" endtime="20190904 12:51:33.280"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20190904 12:51:33.281" level="INFO">Logging into 'n9k2:22' as 'admin'.</msg>
+<msg timestamp="20190904 12:51:35.606" level="INFO">Read output: 
+Cisco NX-OS Software
+Copyright (c) 2002-2018, Cisco Systems, Inc. All rights reserved.
+Nexus 9000v software ("Nexus 9000v Software") and related documentation,
+files or other reference materials ("Documentation") are
+the proprietary property and confidential information of Cisco
+Systems, Inc. ("Cisco") and are protected, without limitation,
+pursuant to United States and International copyright and trademark
+laws in the applicable jurisdiction which provide civil and criminal
+penalties for copying or distribution without Cisco's authorization.
+
+Any use or disclosure, in whole or in part, of the Nexus 9000v Software
+or Documentation to any third party for any purposes is expressly
+prohibited except as otherwise authorized by Cisco in writing.
+The copyrights to certain works contained herein are owned by other
+third parties and are used and distributed under license. Some parts
+of this software may be covered under the GNU Public License or the
+GNU Lesser General Public License. A copy of each such license is
+available at
+http://www.gnu.org/licenses/gpl.html and
+http://www.gnu.org/licenses/lgpl.html
+***************************************************************************
+*  Nexus 9000v is strictly limited to use for evaluation, demonstration   *
+*  and NX-OS education. Any use or disclosure, in whole or in part of     *
+*  the Nexus 9000v Software or Documentation to any third party for any   *
+*  purposes is expressly prohibited except as otherwise authorized by     *
+*  Cisco in writing.                                                      *
+***************************************************************************
+N9K2#</msg>
+<status status="PASS" starttime="20190904 12:51:33.280" endtime="20190904 12:51:35.606"></status>
+</kw>
+<status status="PASS" starttime="20190904 12:51:33.280" endtime="20190904 12:51:35.606"></status>
+</kw>
+<test id="s1-s7-s3-t1" name="Check Loopback Reachability to N9K1">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.1</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:35.607" level="INFO">Executing command 'ping 100.100.100.1'.</msg>
+<msg timestamp="20190904 12:51:38.095" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:38.096" level="INFO">${output} = PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: icmp_seq=0 ttl=253 time=5.962 ms
+64 bytes from 100.100.100.1: icmp_seq=1 ttl=253 time=5.787 ms
+64 bytes from 100.100.100....</msg>
+<status status="PASS" starttime="20190904 12:51:35.607" endtime="20190904 12:51:38.096"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.1</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:38.096" endtime="20190904 12:51:38.096"></status>
+</kw>
+<doc>ping Spine 1 loopback N9k1</doc>
+<status status="PASS" starttime="20190904 12:51:35.606" endtime="20190904 12:51:38.096" critical="yes"></status>
+</test>
+<test id="s1-s7-s3-t2" name="Check Loopback Reachability to N9K2">
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>ping 100.100.100.2</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190904 12:51:38.097" level="INFO">Executing command 'ping 100.100.100.2'.</msg>
+<msg timestamp="20190904 12:51:40.688" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190904 12:51:40.688" level="INFO">${output} = PING 100.100.100.2 (100.100.100.2): 56 data bytes
+64 bytes from 100.100.100.2: icmp_seq=0 ttl=255 time=0.61 ms
+64 bytes from 100.100.100.2: icmp_seq=1 ttl=255 time=0.561 ms
+64 bytes from 100.100.100.2...</msg>
+<status status="PASS" starttime="20190904 12:51:38.097" endtime="20190904 12:51:40.688"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>64 bytes from 100.100.100.2</arg>
+</arguments>
+<status status="PASS" starttime="20190904 12:51:40.689" endtime="20190904 12:51:40.689"></status>
+</kw>
+<doc>Check OSPF neighbour to n9k2</doc>
+<status status="PASS" starttime="20190904 12:51:38.097" endtime="20190904 12:51:40.689" critical="yes"></status>
+</test>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190904 12:51:40.690" endtime="20190904 12:51:40.691"></status>
+</kw>
+<doc>Test Loopback reachability</doc>
+<status status="PASS" starttime="20190904 12:51:33.277" endtime="20190904 12:51:40.691"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:51:24.949" endtime="20190904 12:51:40.693"></status>
+</suite>
+<status status="PASS" starttime="20190904 12:46:04.908" endtime="20190904 12:51:40.699"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="67" fail="0">Critical Tests</stat>
+<stat pass="67" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="67" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="25" fail="0" id="s1-s1" name="Intra Vni">Tests.Intra Vni</stat>
+<stat pass="5" fail="0" id="s1-s1-s1" name="Centos1 ping">Tests.Intra Vni.Centos1 ping</stat>
+<stat pass="5" fail="0" id="s1-s1-s2" name="Centos2 ping">Tests.Intra Vni.Centos2 ping</stat>
+<stat pass="5" fail="0" id="s1-s1-s3" name="Centos3 ping">Tests.Intra Vni.Centos3 ping</stat>
+<stat pass="5" fail="0" id="s1-s1-s4" name="Centos4 ping">Tests.Intra Vni.Centos4 ping</stat>
+<stat pass="5" fail="0" id="s1-s1-s5" name="Centos5 ping">Tests.Intra Vni.Centos5 ping</stat>
+<stat pass="7" fail="0" id="s1-s2" name="Leaf1">Tests.Leaf1</stat>
+<stat pass="1" fail="0" id="s1-s2-s1" name="Feature Check L1">Tests.Leaf1.Feature Check L1</stat>
+<stat pass="2" fail="0" id="s1-s2-s2" name="NVE testL1">Tests.Leaf1.NVE testL1</stat>
+<stat pass="2" fail="0" id="s1-s2-s3" name="ospf Leaf1">Tests.Leaf1.ospf Leaf1</stat>
+<stat pass="2" fail="0" id="s1-s2-s4" name="Ping All Loopbacks">Tests.Leaf1.Ping All Loopbacks</stat>
+<stat pass="7" fail="0" id="s1-s3" name="Leaf2">Tests.Leaf2</stat>
+<stat pass="1" fail="0" id="s1-s3-s1" name="Feature Check L2">Tests.Leaf2.Feature Check L2</stat>
+<stat pass="2" fail="0" id="s1-s3-s2" name="NVE testL2">Tests.Leaf2.NVE testL2</stat>
+<stat pass="2" fail="0" id="s1-s3-s3" name="ospf Leaf2">Tests.Leaf2.ospf Leaf2</stat>
+<stat pass="2" fail="0" id="s1-s3-s4" name="Ping All Loopbacks">Tests.Leaf2.Ping All Loopbacks</stat>
+<stat pass="7" fail="0" id="s1-s4" name="Leaf3">Tests.Leaf3</stat>
+<stat pass="1" fail="0" id="s1-s4-s1" name="Feature Check L3">Tests.Leaf3.Feature Check L3</stat>
+<stat pass="2" fail="0" id="s1-s4-s2" name="NVE testL3">Tests.Leaf3.NVE testL3</stat>
+<stat pass="2" fail="0" id="s1-s4-s3" name="ospf Leaf3">Tests.Leaf3.ospf Leaf3</stat>
+<stat pass="2" fail="0" id="s1-s4-s4" name="Ping All Loopbacks">Tests.Leaf3.Ping All Loopbacks</stat>
+<stat pass="7" fail="0" id="s1-s5" name="Leaf4">Tests.Leaf4</stat>
+<stat pass="1" fail="0" id="s1-s5-s1" name="Feature Check L4">Tests.Leaf4.Feature Check L4</stat>
+<stat pass="2" fail="0" id="s1-s5-s2" name="NVE testL4">Tests.Leaf4.NVE testL4</stat>
+<stat pass="2" fail="0" id="s1-s5-s3" name="ospf Leaf4">Tests.Leaf4.ospf Leaf4</stat>
+<stat pass="2" fail="0" id="s1-s5-s4" name="Ping All Loopbacks">Tests.Leaf4.Ping All Loopbacks</stat>
+<stat pass="7" fail="0" id="s1-s6" name="Spine1">Tests.Spine1</stat>
+<stat pass="1" fail="0" id="s1-s6-s1" name="Feature Check SP1">Tests.Spine1.Feature Check SP1</stat>
+<stat pass="4" fail="0" id="s1-s6-s2" name="Ospf Spine1">Tests.Spine1.Ospf Spine1</stat>
+<stat pass="2" fail="0" id="s1-s6-s3" name="Ping All Loopbacks">Tests.Spine1.Ping All Loopbacks</stat>
+<stat pass="7" fail="0" id="s1-s7" name="Spine2">Tests.Spine2</stat>
+<stat pass="1" fail="0" id="s1-s7-s1" name="Feature Check SP2">Tests.Spine2.Feature Check SP2</stat>
+<stat pass="4" fail="0" id="s1-s7-s2" name="Ospf Spine2">Tests.Spine2.Ospf Spine2</stat>
+<stat pass="2" fail="0" id="s1-s7-s3" name="Ping All Loopbacks">Tests.Spine2.Ping All Loopbacks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
