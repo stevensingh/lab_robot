@@ -40,7 +40,7 @@ Check BGP Neighbor to N9K5
 Check BGP  Neighbor to N9K6
     [Documentation]   Check l2vpn Neibourship with Leaf4 N9K6
     ${output}         Execute Command    show bgp l2vpn evpn summary
-    Should Contain    ${output}          100.1100.100.6  4 65001
+    Should Contain    ${output}          100.100.100.6  4 65001
 
 Check BGP Neighbor to N9K7
     [Documentation]   Check l2vpn Neibourship with Leaf5 N9K7
