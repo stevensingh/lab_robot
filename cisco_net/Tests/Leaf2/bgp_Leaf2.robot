@@ -27,7 +27,7 @@ Check BGP Neighbor to N9K1
     ${output}         Execute Command    show bgp l2vpn evpn summary 
     Should Contain    ${output}          100.100.100.1   4 65001
 
-Check BGP  Neighbor to N9K2
-    [Documentation]   Check l2vpn Neibourship with Spine N9K2
-    ${output}         Execute Command    show bgp l2vpn evpn summary | grep 100.100.100.2
+Check BGP Neighbor to N9K2
+    [Documentation]   Check l2vpn Neibourship with Spine 2 N9K2
+    ${output}         Execute Command    show bgp l2vpn evpn summary
     Should Contain    ${output}          100.100.100.2   4 65001
