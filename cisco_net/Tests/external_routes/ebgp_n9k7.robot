@@ -1,11 +1,11 @@
 *** Settings ***
-Documentation           Test all ospf neibours Leaf 1 N9K3
+Documentation           External BGP routes from external router
 library                 SSHLibrary
 Suite Setup             Open Connection And Log In
 Suite Teardown          Close All Connections
 
 *** Variables ***
-${HOST}                 n9k3
+${HOST}                 n9k7
 ${USERNAME}             admin
 ${PASSWORD}             cisco
 
@@ -20,10 +20,8 @@ Open Connection And Log In
 
 *** Test Cases ***
 
-Check Leaf1 Feature Set
+Check BGP routes being recived to see if the contain
     [Documentation]   Check Features
     ${output}         Execute Command    show  ip route vrf Tenant-1
     Should Contain    ${output}          11.0.0.0/24, ubest/mbest: 1/0
-    Should Contain    ${output}          *via 10.10.1.1, [20/0], bgp-65001, external, tag 65003
     Should Contain    ${output}          12.0.0.0/24, ubest/mbest: 1/0
-    Should Contain    ${output}          *via 10.10.1.1, [20/0], bgp-65001, external, tag 65003
