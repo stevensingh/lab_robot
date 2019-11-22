@@ -22,6 +22,6 @@ Open Connection And Log In
 
 Check BGP routes being recived to see if the contain
     [Documentation]   Check Features
-    ${output}         Execute Command    show  ip route vrf Tenant-1
+    ${output}         Execute Command    show ip route vrf Tenant-1
     Should Contain    ${output}          11.0.0.0/24, ubest/mbest: 1/0
     Should Contain    ${output}          12.0.0.0/24, ubest/mbest: 1/0
